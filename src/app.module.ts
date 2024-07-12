@@ -6,6 +6,8 @@ import { AppService } from './app.service';
 import { ConfigTestModule } from './config-test/config-test.module';
 import { StandardResponseModule } from './standard-response/standard-response.module';
 import { DatabaseTestModule } from './database-test/database-test.module';
+import { UserInfoModule } from './user-info/user-info.module';
+import { MessageModule } from './message/message.module';
 
 @Module({
   imports: [
@@ -28,6 +30,8 @@ import { DatabaseTestModule } from './database-test/database-test.module';
     StandardResponseModule,
     ConfigTestModule,
     DatabaseTestModule,
+    UserInfoModule,
+    MessageModule,
   ],
   controllers: [AppController],
   providers: [AppService],
