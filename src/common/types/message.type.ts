@@ -18,3 +18,20 @@ export enum MessageType {
   LIST_REPLY = 'list_reply',
   TEMPLATE = 'template',
 }
+
+export interface FacebookTextMessage {
+  recipient: { id: string };
+  message: { text: string };
+}
+
+export interface FacebookMediaMessage {
+  recipient: { id: string };
+  message: {
+    attachment: {
+      type: 'image' | 'video';
+      payload: { url: string };
+    };
+  };
+}
+
+export type FacebookMessage = FacebookTextMessage | FacebookMediaMessage;

@@ -32,7 +32,7 @@ export class UserInfo {
   })
   userName: string;
 
-  @Column({ name: 'avatar_url' })
+  @Column({ name: 'avatar_url', nullable: true })
   @ApiProperty({
     description: '用户头像 URL',
     type: String,

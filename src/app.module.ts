@@ -8,6 +8,7 @@ import { StandardResponseModule } from './standard-response/standard-response.mo
 import { DatabaseTestModule } from './database-test/database-test.module';
 import { UserInfoModule } from './user-info/user-info.module';
 import { MessageModule } from './message/message.module';
+import { WebhookModule } from './webhook/webhook.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { MessageModule } from './message/message.module';
     DatabaseTestModule,
     UserInfoModule,
     MessageModule,
+    WebhookModule,
   ],
   controllers: [AppController],
   providers: [AppService],

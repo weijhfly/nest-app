@@ -7,6 +7,8 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
+import { ApiOperation } from '@nestjs/swagger';
+import { Platform } from '@src/common/types';
 import { CreateMessageDto } from './dto/create-message.dto';
 import { UpdateMessageDto } from './dto/update-message.dto';
 import { MessageService } from './message.service';
@@ -15,9 +17,13 @@ import { MessageService } from './message.service';
 export class MessageController {
   constructor(private readonly messageService: MessageService) {}
 
-  @Post()
-  create(@Body() createMessageDto: CreateMessageDto) {
-    return this.messageService.create(createMessageDto);
+  @Post('send:platform')
+  @ApiOperation({ summary: '发送不同平台的消息' })
+  create(
+    @Param('platform') platform: Platform,
+    @Body() createMessageDto: CreateMessageDto,
+  ) {
+    return this.messageService.sendMessage(platform, createMessageDto);
   }
 
   @Get()

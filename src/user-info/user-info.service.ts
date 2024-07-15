@@ -9,21 +9,27 @@ import { UserInfo } from './entities/user-info.entity';
 export class UserInfoService {
   constructor(
     @InjectRepository(UserInfo)
-    private messageRepository: Repository<UserInfo>,
+    private userInfoRepository: Repository<UserInfo>,
   ) {}
   findAll(): Promise<UserInfo[]> {
-    return this.messageRepository.find();
+    return this.userInfoRepository.find();
   }
 
   findOne(id: string): Promise<UserInfo> {
-    return this.messageRepository.findOne({
+    return this.userInfoRepository.findOne({
       where: { id },
     });
   }
 
+  findOneByPlatformUserId(platformUserId: string): Promise<UserInfo> {
+    return this.userInfoRepository.findOne({
+      where: { platformUserId },
+    });
+  }
+
   async create(createUserInfoDto: CreateUserInfoDto): Promise<UserInfo> {
-    const msg = this.messageRepository.create(createUserInfoDto);
-    await this.messageRepository.save(msg);
+    const msg = this.userInfoRepository.create(createUserInfoDto);
+    await this.userInfoRepository.save(msg);
     return msg;
   }
 
@@ -31,13 +37,13 @@ export class UserInfoService {
     id: string,
     updateUserInfoDto: UpdateUserInfoDto,
   ): Promise<UserInfo> {
-    await this.messageRepository.update(id, updateUserInfoDto);
-    return this.messageRepository.findOne({
+    await this.userInfoRepository.update(id, updateUserInfoDto);
+    return this.userInfoRepository.findOne({
       where: { id },
     });
   }
 
   async remove(id: number): Promise<void> {
-    await this.messageRepository.delete(id);
+    await this.userInfoRepository.delete(id);
   }
 }

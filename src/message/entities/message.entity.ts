@@ -33,12 +33,19 @@ export class Message {
   })
   type: MessageType;
 
-  @Column()
+  @Column('text')
   @ApiProperty({
     description: '消息内容',
     type: String,
   })
   content: string;
+
+  @Column({ name: 'is_from_user', type: 'boolean', default: true })
+  @ApiProperty({
+    description: '是否是用户发送的消息',
+    type: Boolean,
+  })
+  isFromUser: boolean;
 
   @Column({
     name: 'create_time',

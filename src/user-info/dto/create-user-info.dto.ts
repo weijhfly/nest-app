@@ -25,12 +25,12 @@ export class CreateUserInfoDto {
     description: '用户头像 URL',
     type: String,
   })
-  avatarUrl: string;
+  avatarUrl?: string;
 
   @ApiProperty({
     description: '额外信息',
     type: 'object',
     default: {},
   })
-  extraInfo: Record<string, any>;
+  extraInfo?: Record<string, any>;
 }

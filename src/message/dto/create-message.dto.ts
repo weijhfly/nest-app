@@ -22,9 +22,8 @@ export class CreateMessageDto {
   content: string;
 
   @ApiProperty({
-    description: '额外信息',
-    type: 'object',
-    default: {},
+    description: '是否是用户发送的消息',
+    type: Boolean,
   })
-  extraInfo: Record<string, any>;
+  isFromUser?: boolean;
 }
